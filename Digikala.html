@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Annoying Page</title>
+    <style>
+        body {
+            margin: 0;
+            background-color: black;
+            overflow: hidden;
+            color: white;
+            font-family: sans-serif;
+        }
+        #annoyingText {
+            position: absolute;
+            color: yellow;
+            font-size: 40px;
+            font-weight: bold;
+            animation: spin 0.5s linear infinite;
+        }
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        #crazyButton {
+            position: absolute;
+            padding: 20px;
+            background-color: red;
+            color: white;
+            font-size: 25px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        // تغییر سریع رنگ پس‌زمینه
+        setInterval(() => {
+            document.body.style.backgroundColor = `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+        }, 50);
+
+        // باز کردن پنجره‌ها به‌طور بی‌پایان
+        setInterval(() => {
+            for (let i = 0; i < 5; i++) {
+                window.open('https://example.com', '_blank', `width=${Math.random() * 500 + 100},height=${Math.random() * 500 + 100}`);
+            }
+        }, 3000);
+
+        // پخش صدای ناگهانی و مکرر
+        const audio = new Audio('https://www.soundjay.com/button/beep-07.wav');
+        audio.loop = true;
+        audio.play();
+        
+        // نمایش متن‌های متحرک
+        setInterval(() => {
+            const text = document.createElement('div');
+            text.id = 'annoyingText';
+            text.textContent = "YOU CAN'T ESCAPE!";
+            text.style.left = Math.random() * window.innerWidth + 'px';
+            text.style.top = Math.random() * window.innerHeight + 'px';
+            document.body.appendChild(text);
+
+            setTimeout(() => {
+                text.remove();
+            }, 1000);
+        }, 300);
+
+        // ایجاد دکمه مزاحم که حرکت می‌کند
+        const crazyButton = document.createElement('button');
+        crazyButton.id = 'crazyButton';
+        crazyButton.textContent = 'CLICK ME!';
+        document.body.appendChild(crazyButton);
+        
+        setInterval(() => {
+            crazyButton.style.top = Math.random() * window.innerHeight + 'px';
+            crazyButton.style.left = Math.random() * window.innerWidth + 'px';
+        }, 200);
+
+        // جلوگیری از خروج از صفحه
+        window.onbeforeunload = function() {
+            return "You're stuck here forever!";
+        };
+
+        // تغییر اندازه صفحه
+        setInterval(() => {
+            window.resizeTo(Math.random() * 800 + 500, Math.random() * 800 + 500);
+        }, 1500);
+
+    </script>
+</body>
+</html>
